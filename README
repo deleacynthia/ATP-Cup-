@@ -1,0 +1,50 @@
+Structuri de date folosite in rezolvarea temei:
+        - lista dublu inlantuita cu circulara cu santinela
+        - o stiva
+        - o coada
+
+Lista este folosita la primele doua cerinte pentru a retine tarile participante
+la turneu. In lista tin doar un pointer la o variabila de tip Country ca sa
+usureze manipularea datelor. Deoarece ar fi trebuit sa copiez multa memorie din
+lista in stiva, din stiva in coada, etc, a fost mai usor sa pasez doar pointerul
+catre zona de memorie deja alocata. La final nu a trebuit sa aloc si sa dezaloc
+decat o singura data (cand citesc si cand sterg lista).
+
+Stiva este structurata sub forma unei liste simplu inlantuite cu un singur camp
+si anume un pointer catre o variabila de tip Country.
+
+Coada, asemanator stivei este o lista simplu inlantuita, dar de data asta cu 2
+campuri: doua variabile de tip int, care tin minte pozitia in vectorul players
+din cadrul structurii Country a jucatorilor dintr-un meci.
+
+Cerinta 1:
+Se citesc datele din primul fisier primit in linia de comanda ca sa vad ce
+cerinte trebuie sa rezolv. 
+Se citesc datele legate de turneu din fisierul primit ca al doilea parametru in
+linia de comanda si se aloca o lista (ca cea descrisa anterior). Aici se
+salveaza si numarul de tari pe care le tin in lista in variabila n.
+
+In cadrul campului global_score din cadrul structurii Country salvez scorul
+initial al tarii respective care este media scorurilor individuale ale
+jucatorilor.
+
+Afisarea pentru acest subpunct se realizeaza dupa iful care rezolva si cerinta
+a doua.
+
+Cerinta 2:
+Din lista populata deja la cerinta 1 incep si scot tari pana cand dimensiunea
+listei devine o putere a lui 2. Ca sa verific acest lucru am folosit un
+artificiu folosind functia log2 din math.h. Ca sa fiu sigur ca n este putere a
+lui 2 am verificat valorile returnate de ceil(log2(n)) si floor(log2(n)).
+        - ceil intoarce cea mai mica valoare intreaga care este mai mare sau
+                egale cu numarul dat.
+        - floor intoarce cea mai mare valoare intreaga care este mai mica sau
+                egale cu numarul dat.
+In momentul in care cele doua returneaza aceeasi valoare inseamna ca numarul dat
+este putere a lui 2.
+
+Cerinta 3:
+La acest punct transform lista folosita anterior intr-o stiva. Cand fac trecerea
+ma asigur ca si reinitializez valorile din campul global_score cu 0 pentru toate
+tarile din stiva.
+Desfasurarea turei este destul de usor de urmarit din comentariile din cod.
